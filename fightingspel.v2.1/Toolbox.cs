@@ -3,10 +3,13 @@ using System.IO;
 using System.Text.Json;
 using System.Collections.Generic;
 
-public class fighter
+public class Fighter
 {
     public int hp { get; set; }
     public int dmg { get; set; }
+    public int lvl { get; set; }
+    public int lvlmulti { get; set; }
+    public int xp { get; set; }
 }
 public class Toolbox
 {
@@ -40,17 +43,20 @@ public class Toolbox
             ii++;
         }
         //skriver in saker i json filen 
-        var fighter = new fighter
+        var fighter = new Fighter
         {
             hp = 100,
-            dmg = 10
+            dmg = 10,
+            lvl = 1,
+            lvlmulti = 2,
+            xp = 0
         };
 
         string jsonString = JsonSerializer.Serialize(fighter);
         File.WriteAllText(fileName, jsonString);
     }
 
-    public static fighter loodgame()
+    public static Fighter loodgame()
     {
         string[] line = File.ReadAllLines(@"saves.txt");
         int ii = 0;
@@ -68,7 +74,7 @@ public class Toolbox
 
         //(Deserialize) data
         string jsonString = File.ReadAllText(save);
-        fighter fighter = JsonSerializer.Deserialize<fighter>(jsonString);
+        Fighter fighter = JsonSerializer.Deserialize<Fighter>(jsonString);
         return fighter;
     }
 }
