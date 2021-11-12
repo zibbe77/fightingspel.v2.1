@@ -68,7 +68,7 @@ public class Toolbox
             save = Console.ReadLine();
             for (int i = 0; i < line.Length; i++)
             {
-                if (save == line[i]) { ii++; }
+                if (save == line[i]) {  ii++;  }
             }
         }
 
