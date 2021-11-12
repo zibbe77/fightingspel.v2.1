@@ -20,7 +20,7 @@ while (ii < 1)
         fight = Toolbox.loodgame();
         ii++;
     }
-    if (val != "new game" || val != "load game")
+    if (val != "new game" && val != "load game")
     {
         System.Console.WriteLine("skriv load game eller new game");
     }
