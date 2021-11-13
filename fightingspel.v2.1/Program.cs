@@ -38,12 +38,12 @@ while(ii < 1){
     //För att gå till butiken
     if (göra == "butiken")
     {
-
+        
     }
     //för att spara
     if (göra == "spara")
     {
-        
+
     }
     //för att avlsutta 
     if(göra == "avsluta")
