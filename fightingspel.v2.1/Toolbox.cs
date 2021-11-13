@@ -1,7 +1,6 @@
 using System;
 using System.IO;
 using System.Text.Json;
-using System.Collections.Generic;
 
 public class Fighter
 {
@@ -9,7 +8,9 @@ public class Fighter
     public int dmg { get; set; }
     public int lvl { get; set; }
     public int lvlmulti { get; set; }
-    public int xp { get; set; }
+    public int xp { get; set; } 
+    public int pengar {get; set;}
+    public string namn {get; set;}
 }
 public class Toolbox
 {
@@ -49,7 +50,9 @@ public class Toolbox
             dmg = 10,
             lvl = 1,
             lvlmulti = 2,
-            xp = 0
+            xp = 0,
+            pengar = 100,
+            namn = fileName
         };
 
         string jsonString = JsonSerializer.Serialize(fighter);

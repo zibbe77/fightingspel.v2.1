@@ -24,8 +24,32 @@ while (ii < 1)
     
 ii = 0;
 while(ii < 1){
+    
+    System.Console.WriteLine("Vad vill du göra");
+    System.Console.WriteLine("| Slåss | butiken | Spara | Avsluta |");
+    string göra = Console.ReadLine().ToLower();
+    
+    //för att slåss
+    if(göra == "slåss")
+    {
     Fiende fiende = Gamebox.skapaFiende(fight);
     fight = Gamebox.slag(fight, fiende);
+    }
+    //För att gå till butiken
+    if (göra == "butiken")
+    {
+
+    }
+    //för att spara
+    if (göra == "spara")
+    {
+        
+    }
+    //för att avlsutta 
+    if(göra == "avsluta")
+    {
+        ii++;
+    }
 }
 
 
