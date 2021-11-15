@@ -13,11 +13,11 @@ public class Gamebox
     public static Fiende skapaFiende(Fighter fighter)
     {
         Random generator = new Random();
-        int r = generator.Next(4, 8);
+        int r = generator.Next(fighter.lvlmulti, fighter.lvlmulti + 6);
 
         Fiende fiende = new Fiende
         {
-            hp = fighter.lvlmulti * r + 100,
+            hp = fighter.lvlmulti * r + 60,
             dmg = fighter.lvlmulti * r
         };
         return fiende;
@@ -80,9 +80,9 @@ public class Gamebox
                 ii++;
                 fighter.pengar += 50 * fighter.lvlmulti;
                 fighter.xp += 100 / fighter.lvlmulti;
-                
+
                 System.Console.WriteLine($"Du fick {50 * fighter.lvlmulti} pengar och {100 / fighter.lvlmulti} xp (Det krävs hundra xp för att lvl up)");
-                
+
                 //kollar om du ska lvl up
                 if (fighter.xp > 100)
                 {
@@ -97,6 +97,24 @@ public class Gamebox
                 System.Console.WriteLine($"Du är lvl {fighter.lvl}");
                 Console.ReadLine();
             }
+            if(fighter.hp < 0)
+            {
+                while(ii < 1){
+                System.Console.WriteLine("Du dog");
+                System.Console.WriteLine("Vill du spara innan spelets avslutas?");
+                System.Console.WriteLine("| Ja | Nej |");
+                göra = Console.ReadLine().ToLower();
+                
+                if (göra == "ja"){
+                    Toolbox.savegame(fighter);
+                    ii++;
+                }
+                if( göra == "nej"){
+                    ii++;
+                }
+                }             
+                
+            }
         }
 
         return fighter;
@@ -107,17 +125,32 @@ public class Gamebox
         int ii = 0;
         while (ii < 1)
         {
-            System.Console.WriteLine("Det som fins och köpa är hp flaskor som healar 50 hp kostar 300 pengar och 1 skada som kostar 500");
-            System.Console.WriteLine("| HP | Skada |");
+            System.Console.WriteLine("Det som fins att köpa är hp flaskor som healar 50 hp kostar 100 pengar och 2 skada som kostar 300");
+            System.Console.WriteLine("| HP | Skada | Tillbaka |");
 
             string göra = Console.ReadLine().ToLower();
             if (göra == "hp")
             {
-                fighter.hp += 50;
-                if(fighter.hp > fighter.lvlmulti * 5 + 100)
+                if (fighter.pengar > 100)
                 {
-                    fighter.hp = fighter.lvlmulti * 5 + 100;
+                    fighter.hp += 50;
+                    if (fighter.hp > fighter.lvl * 5 + 95)
+                    {
+                        fighter.hp = fighter.lvl * 5 + 95;
+                        System.Console.WriteLine("Du har fult");
+                    }
                 }
+            }
+            if (göra == "skada")
+            {
+                if (fighter.pengar > 300)
+                {
+                    fighter.dmg += 2;
+                }
+            }
+            if (göra == "tillbaka")
+            {
+                ii++;
             }
 
         }

@@ -80,4 +80,12 @@ public class Toolbox
         Fighter fighter = JsonSerializer.Deserialize<Fighter>(jsonString);
         return fighter;
     }
+
+    public static void savegame(Fighter fighter){
+
+        //sterelierar data
+        string jsonString = JsonSerializer.Serialize(fighter);
+        File.WriteAllText(fighter.namn, jsonString); 
+        
+    }
 }
