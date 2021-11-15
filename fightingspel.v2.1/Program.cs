@@ -63,14 +63,15 @@ while (ii < 1)
                 if (göra == "nej") { ii++; }
                 if (göra == "ja")
                 {
-                    fight = Gamebox.butiken(fight);
+                    Toolbox.savegame(fight);
                     ii++;
                 }
             }
 
 
         }
-    } else {ii++;}
+    }
+    else { ii++; }
 }
 
 

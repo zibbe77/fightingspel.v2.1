@@ -29,8 +29,8 @@ public class Gamebox
         while (ii < 1)
         {
             //skriver information till spelaren
-            System.Console.WriteLine($"Finden har {fiende.hp} och gör max {fiende.dmg} dmg");
-            System.Console.WriteLine($"Du har {fighter.hp} och gör max {fighter.dmg}");
+            System.Console.WriteLine($"Finden har {fiende.hp} hp och gör max {fiende.dmg} dmg");
+            System.Console.WriteLine($"Du har {fighter.hp} hp och gör max {fighter.dmg} dmg");
             System.Console.WriteLine("Vad vill du göra?");
             System.Console.WriteLine("| Springa | Hårt slag | Lätt slag |");
 
@@ -97,23 +97,26 @@ public class Gamebox
                 System.Console.WriteLine($"Du är lvl {fighter.lvl}");
                 Console.ReadLine();
             }
-            if(fighter.hp < 0)
+            if (fighter.hp < 0)
             {
-                while(ii < 1){
-                System.Console.WriteLine("Du dog");
-                System.Console.WriteLine("Vill du spara innan spelets avslutas?");
-                System.Console.WriteLine("| Ja | Nej |");
-                göra = Console.ReadLine().ToLower();
-                
-                if (göra == "ja"){
-                    Toolbox.savegame(fighter);
-                    ii++;
+                while (ii < 1)
+                {
+                    System.Console.WriteLine("Du dog");
+                    System.Console.WriteLine("Vill du spara innan spelets avslutas?");
+                    System.Console.WriteLine("| Ja | Nej |");
+                    göra = Console.ReadLine().ToLower();
+
+                    if (göra == "ja")
+                    {
+                        Toolbox.savegame(fighter);
+                        ii++;
+                    }
+                    if (göra == "nej")
+                    {
+                        ii++;
+                    }
                 }
-                if( göra == "nej"){
-                    ii++;
-                }
-                }             
-                
+
             }
         }
 
@@ -125,8 +128,8 @@ public class Gamebox
         int ii = 0;
         while (ii < 1)
         {
-            System.Console.WriteLine("Det som fins att köpa är hp flaskor som healar 50 hp kostar 100 pengar och 2 skada som kostar 300");
-            System.Console.WriteLine("| HP | Skada | Tillbaka |");
+            System.Console.WriteLine("Det som fins att köpa är hp flaskor som healar 50 hp kostar 100 pengar och 2 dmg som kostar 300");
+            System.Console.WriteLine("| HP | dmg | Tillbaka |");
 
             string göra = Console.ReadLine().ToLower();
             if (göra == "hp")
@@ -137,11 +140,11 @@ public class Gamebox
                     if (fighter.hp > fighter.lvl * 5 + 95)
                     {
                         fighter.hp = fighter.lvl * 5 + 95;
-                        System.Console.WriteLine("Du har fult");
+                        System.Console.WriteLine("Du har fult hp");
                     }
                 }
             }
-            if (göra == "skada")
+            if (göra == "dmg")
             {
                 if (fighter.pengar > 300)
                 {
