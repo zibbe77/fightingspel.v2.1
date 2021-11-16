@@ -136,6 +136,7 @@ public class Gamebox
             {
                 if (fighter.pengar > 100)
                 {
+                    fighter.pengar -= 100;
                     fighter.hp += 50;
                     if (fighter.hp > fighter.lvl * 5 + 95)
                     {
@@ -148,6 +149,7 @@ public class Gamebox
             {
                 if (fighter.pengar > 300)
                 {
+                    fighter.pengar -= 300;
                     fighter.dmg += 2;
                 }
             }
